@@ -1,0 +1,53 @@
+{
+    "manifest_version": 3,
+    "name": "百度统计辅助工具",
+    "version": "0.0.8",
+    "description": "百度统计辅助工具，包含代码检查、热力图UA切换等。",
+    "homepage_url": "https://tongji.baidu.com",
+    "icons": {
+        "16": "image/logo.png",
+        "48": "image/logo.png",
+        "128": "image/logo.png"
+    },
+    "action": {
+        "default_icon": "image/logo.png",
+        "default_title": "百度统计辅助工具",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "js/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "all_frames": true,
+            "js": ["js/content_script.js", "js/content_heatmap.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "devtools_page": "devtools.html",
+    "web_accessible_resources": [
+        {
+            "resources": ["js/auto_event.js"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "webNavigation",
+        "declarativeNetRequest",
+        "cookies",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "declarative_net_request": {
+        "rule_resources": [{
+            "id": "ruleset_1",
+            "enabled": true,
+            "path": "rules.json"
+        }]
+    }
+}

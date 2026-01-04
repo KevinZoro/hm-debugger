@@ -1,0 +1,1 @@
+chrome.devtools.panels.elements.createSidebarPane("Auto Event",function(e){e.setObject({message:"无审查元素"}),chrome.devtools.panels.elements.onSelectionChanged.addListener(function(){chrome.devtools.inspectedWindow.eval("getAutoEventTrackingInfo($0)",function(n,t){t||e.setObject(n)})})});
